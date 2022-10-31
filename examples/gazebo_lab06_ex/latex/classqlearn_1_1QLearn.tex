@@ -1,0 +1,185 @@
+\hypertarget{classqlearn_1_1QLearn}{}\doxysection{qlearn.\+Q\+Learn Class Reference}
+\label{classqlearn_1_1QLearn}\index{qlearn.QLearn@{qlearn.QLearn}}
+
+
+\mbox{\hyperlink{classqlearn_1_1QLearn}{Q\+Learn}} Class provides functionality for Q Reinforcement Learning.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classqlearn_1_1QLearn_a2355db203614029b30dc227124d40898}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, actions, epsilon, alpha, gamma)
+\begin{DoxyCompactList}\small\item\em Initialization function for Qlearn object. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classqlearn_1_1QLearn_aa527b025eca1d244ec3084f9408920a8}{loadQ}} (self, filename)
+\begin{DoxyCompactList}\small\item\em loadQ function loads the Q-\/values from a pickle file \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classqlearn_1_1QLearn_ad553fb267da635fa31874b90c6e97554}{saveQ}} (self, filename)
+\begin{DoxyCompactList}\small\item\em Save the Q state-\/action values in a pickle file. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classqlearn_1_1QLearn_ab9e0eef9560e035d5cccc606c96251e1}{getQ}} (self, state, action)
+\begin{DoxyCompactList}\small\item\em getQ function returns the state, action Q value or 0.\+0 if the value is missing \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classqlearn_1_1QLearn_a2ad7f59ef866c1b84291305a7e9f5314}{choose\+Action}} (self, state, return\+\_\+q=False)
+\begin{DoxyCompactList}\small\item\em choose\+Action implements exploration vs exploitation based on the epsilon setting. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classqlearn_1_1QLearn_a64c4e510f84f82b566a81bb5d072ab08}{learn}} (self, state1, action1, reward, state2)
+\begin{DoxyCompactList}\small\item\em learn updates the Q(state,value) dictionary using the bellman update equation Q(s1, a1) += alpha $\ast$ \mbox{[}reward(s1,a1) + gamma$\ast$ max(\+Q(s2)) -\/ Q(s1,a1)\mbox{]} Find max(\+Q) for state2 Update Q for (state1, action1) (use discount factor gamma for future rewards) \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classqlearn_1_1QLearn_a5506e5e0d245a1a4e3a5ff2d0a99d023}{learnQ}} (self, state1, action1, reward, value)
+\begin{DoxyCompactList}\small\item\em learnQ updates Q-\/value based on provided parameters Address edge case if the \mbox{[}state, action\mbox{]} is not in our dictionary? \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classqlearn_1_1QLearn_a05400e648249c68c264ec9825d421be3}\label{classqlearn_1_1QLearn_a05400e648249c68c264ec9825d421be3}} 
+{\bfseries q}
+\item 
+\mbox{\Hypertarget{classqlearn_1_1QLearn_a6effd636fa0f9561150e6de42e2bbb92}\label{classqlearn_1_1QLearn_a6effd636fa0f9561150e6de42e2bbb92}} 
+{\bfseries epsilon}
+\item 
+\mbox{\Hypertarget{classqlearn_1_1QLearn_a3a72caac4868e5c6ca254ff10990bd3d}\label{classqlearn_1_1QLearn_a3a72caac4868e5c6ca254ff10990bd3d}} 
+{\bfseries alpha}
+\item 
+\mbox{\Hypertarget{classqlearn_1_1QLearn_af29ed5e63c6b34290530ff632b68e5a0}\label{classqlearn_1_1QLearn_af29ed5e63c6b34290530ff632b68e5a0}} 
+{\bfseries gamma}
+\item 
+\mbox{\Hypertarget{classqlearn_1_1QLearn_a1c351b713abe82d8970684678433e4c1}\label{classqlearn_1_1QLearn_a1c351b713abe82d8970684678433e4c1}} 
+{\bfseries actions}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classqlearn_1_1QLearn}{Q\+Learn}} Class provides functionality for Q Reinforcement Learning. 
+
+The class enables chosing an action based on epsilon, filling in the Q values, saving the Q values, and loading the Q values 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classqlearn_1_1QLearn_a2355db203614029b30dc227124d40898}\label{classqlearn_1_1QLearn_a2355db203614029b30dc227124d40898}} 
+\index{qlearn.QLearn@{qlearn.QLearn}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!qlearn.QLearn@{qlearn.QLearn}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def qlearn.\+Q\+Learn.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{actions,  }\item[{}]{epsilon,  }\item[{}]{alpha,  }\item[{}]{gamma }\end{DoxyParamCaption})}
+
+
+
+Initialization function for Qlearn object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actions} & the actions that can be taken \\
+\hline
+{\em epsilon} & the exploration-\/exploitation control value for choosing the next action \\
+\hline
+{\em alpha} & the learning rate \\
+\hline
+{\em gamma} & the the discounting value of future rewards \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classqlearn_1_1QLearn_a2ad7f59ef866c1b84291305a7e9f5314}\label{classqlearn_1_1QLearn_a2ad7f59ef866c1b84291305a7e9f5314}} 
+\index{qlearn.QLearn@{qlearn.QLearn}!chooseAction@{chooseAction}}
+\index{chooseAction@{chooseAction}!qlearn.QLearn@{qlearn.QLearn}}
+\doxysubsubsection{\texorpdfstring{chooseAction()}{chooseAction()}}
+{\footnotesize\ttfamily def qlearn.\+Q\+Learn.\+choose\+Action (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{state,  }\item[{}]{return\+\_\+q = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+choose\+Action implements exploration vs exploitation based on the epsilon setting. 
+
+Therefore, it returns a random action epsilon \% of the time or the action associated with the largest Q value in (1-\/epsilon)\% of the time. Accounts for the case where two actions have the same q-\/values 
+\begin{DoxyParams}{Parameters}
+{\em state} & the state in which the robot is in \\
+\hline
+{\em return\+\_\+q} & (default = False) can be used to return the q value associated with the action chosen \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classqlearn_1_1QLearn_ab9e0eef9560e035d5cccc606c96251e1}\label{classqlearn_1_1QLearn_ab9e0eef9560e035d5cccc606c96251e1}} 
+\index{qlearn.QLearn@{qlearn.QLearn}!getQ@{getQ}}
+\index{getQ@{getQ}!qlearn.QLearn@{qlearn.QLearn}}
+\doxysubsubsection{\texorpdfstring{getQ()}{getQ()}}
+{\footnotesize\ttfamily def qlearn.\+Q\+Learn.\+getQ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{state,  }\item[{}]{action }\end{DoxyParamCaption})}
+
+
+
+getQ function returns the state, action Q value or 0.\+0 if the value is missing 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & the state \\
+\hline
+{\em action} & the action \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classqlearn_1_1QLearn_a64c4e510f84f82b566a81bb5d072ab08}\label{classqlearn_1_1QLearn_a64c4e510f84f82b566a81bb5d072ab08}} 
+\index{qlearn.QLearn@{qlearn.QLearn}!learn@{learn}}
+\index{learn@{learn}!qlearn.QLearn@{qlearn.QLearn}}
+\doxysubsubsection{\texorpdfstring{learn()}{learn()}}
+{\footnotesize\ttfamily def qlearn.\+Q\+Learn.\+learn (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{state1,  }\item[{}]{action1,  }\item[{}]{reward,  }\item[{}]{state2 }\end{DoxyParamCaption})}
+
+
+
+learn updates the Q(state,value) dictionary using the bellman update equation Q(s1, a1) += alpha $\ast$ \mbox{[}reward(s1,a1) + gamma$\ast$ max(\+Q(s2)) -\/ Q(s1,a1)\mbox{]} Find max(\+Q) for state2 Update Q for (state1, action1) (use discount factor gamma for future rewards) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state1} & the current state \\
+\hline
+{\em action1} & the action being taken \\
+\hline
+{\em reward} & the reward for taking the action \\
+\hline
+{\em state2} & the subsequent state \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classqlearn_1_1QLearn_a5506e5e0d245a1a4e3a5ff2d0a99d023}\label{classqlearn_1_1QLearn_a5506e5e0d245a1a4e3a5ff2d0a99d023}} 
+\index{qlearn.QLearn@{qlearn.QLearn}!learnQ@{learnQ}}
+\index{learnQ@{learnQ}!qlearn.QLearn@{qlearn.QLearn}}
+\doxysubsubsection{\texorpdfstring{learnQ()}{learnQ()}}
+{\footnotesize\ttfamily def qlearn.\+Q\+Learn.\+learnQ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{state1,  }\item[{}]{action1,  }\item[{}]{reward,  }\item[{}]{value }\end{DoxyParamCaption})}
+
+
+
+learnQ updates Q-\/value based on provided parameters Address edge case if the \mbox{[}state, action\mbox{]} is not in our dictionary? 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state1} & the current state \\
+\hline
+{\em action1} & the action being taken \\
+\hline
+{\em reward} & the reward for taking the action \\
+\hline
+{\em value} & the future rewards multiplied by the discount factor \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classqlearn_1_1QLearn_aa527b025eca1d244ec3084f9408920a8}\label{classqlearn_1_1QLearn_aa527b025eca1d244ec3084f9408920a8}} 
+\index{qlearn.QLearn@{qlearn.QLearn}!loadQ@{loadQ}}
+\index{loadQ@{loadQ}!qlearn.QLearn@{qlearn.QLearn}}
+\doxysubsubsection{\texorpdfstring{loadQ()}{loadQ()}}
+{\footnotesize\ttfamily def qlearn.\+Q\+Learn.\+loadQ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
+
+
+
+loadQ function loads the Q-\/values from a pickle file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the name of the file to load the Q-\/values from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classqlearn_1_1QLearn_ad553fb267da635fa31874b90c6e97554}\label{classqlearn_1_1QLearn_ad553fb267da635fa31874b90c6e97554}} 
+\index{qlearn.QLearn@{qlearn.QLearn}!saveQ@{saveQ}}
+\index{saveQ@{saveQ}!qlearn.QLearn@{qlearn.QLearn}}
+\doxysubsubsection{\texorpdfstring{saveQ()}{saveQ()}}
+{\footnotesize\ttfamily def qlearn.\+Q\+Learn.\+saveQ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{filename }\end{DoxyParamCaption})}
+
+
+
+Save the Q state-\/action values in a pickle file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the name of the file to save the Q-\/values to \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+qlearn.\+py\end{DoxyCompactItemize}

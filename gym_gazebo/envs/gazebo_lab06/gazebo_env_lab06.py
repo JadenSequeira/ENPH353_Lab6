@@ -1,3 +1,10 @@
+## @package envs
+#  Gazebo_Lab06_Env
+#
+#  The following script sets up the ROS Gazebo environment for the training of the 
+#  line following robot through Q-learning. The main funcitonality in this calss is setting the control of the robots
+#  movements based on actions chosen, and creating a statespace based on the robots camera vision.
+
 
 import cv2
 import gym
@@ -6,21 +13,24 @@ import rospy
 import roslaunch
 import time
 import numpy as np
-
 from cv_bridge import CvBridge, CvBridgeError
 from gym import utils, spaces
 from gym_gazebo.envs import gazebo_env
 from geometry_msgs.msg import Twist
 from std_srvs.srv import Empty
-
 from sensor_msgs.msg import Image
 from time import sleep
-
 from gym.utils import seeding
 
-
+## Gazebo_Lab06_Env Class creates an ROS and gym-gazebo environments for line following Q-learning
+#
+#  The class initializes the environment along with bridging the camera vision to openCV images for processing and analyzing.
+#  The class can be used to process the image into a state in a designed statespace. It can also be used to move the robot and determine the reward through the step function, based on the aciton
+#  chosen. Finally it can reset the robot in the environment and can also seed the robot at the start (randomly).
 class Gazebo_Lab06_Env(gazebo_env.GazeboEnv):
 
+    ## Initialization function iniitializes the ROS environment and robot along with Subsciption and Publishing
+    #  The functino also intializes the gazebo physics engine.
     def __init__(self):
         # Launch the simulation with the given launchfile name
         LAUNCH_FILE = '/home/fizzer/enph353_gym-gazebo-noetic/gym_gazebo/envs/ros_ws/src/enph353_lab06/launch/lab06_world.launch'
@@ -43,23 +53,25 @@ class Gazebo_Lab06_Env(gazebo_env.GazeboEnv):
         self.lower_blue = np.array([97,  0,   0])
         self.upper_blue = np.array([150, 255, 255])
 
+    ## The process_image function intakes an image and provides and returns a state based on the state spaced implemented
+    #  More precisely, it analyzes the cv_image and computes the state array and episode termination condition.
+    #  The state array is a list of 10 elements (in this case) indicating where in the
+    #  The episode termination condition is triggered and outputted when the line is not detected for more than 30 frames.
+    #  @param data the image array provided from subscribing to the robots camera
     def process_image(self, data):
-        '''
-            @brief Coverts data into a opencv image and displays it
-            @param data : Image data from ROS
 
-            @retval (state, done)
-        '''
+        # Convert data to an openCV image
         try:
             cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
         except CvBridgeError as e:
             print(e)
 
-        # cv2.imshow("raw", cv_image)
+        # Please note that the state space can be increased by dividing the picture into smaller subdivisions (different styles of alterations are possible like 2 layers)
 
         state = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         done = False
 
+        # Image processing to determine the center of mass fo the line for providing the state
         gray = cv2.cvtColor(cv_image, cv2.COLOR_RGB2GRAY)
         gblur = cv2.GaussianBlur(gray, (5,5), 0)
         ret,binary = cv2.threshold(gblur,127,255, cv2.THRESH_BINARY_INV)
@@ -73,7 +85,7 @@ class Gazebo_Lab06_Env(gazebo_env.GazeboEnv):
 
             rows, cols = binary.shape
 
-
+            # Break image into 10 vertical columns (10 states)
             spacing = cols/10
             lowerbound = 0
             upperbound = lowerbound + spacing
@@ -85,42 +97,24 @@ class Gazebo_Lab06_Env(gazebo_env.GazeboEnv):
 
                 lowerbound += spacing
                 upperbound += spacing
-            
-        
+                
         else:
             self.timeout += 1
 
         if (self.timeout > 30):
             done = True
 
-
-
-    
-        # Draw a circle at the center of mass coordinates for checking functionality
-        # final = cv2.circle(cv_image,(cX,cY),15,(255,0,0),cv2.FILLED)
-
-        # TODO: Analyze the cv_image and compute the state array and
-        # episode termination condition.
-        #
-        # The state array is a list of 10 elements indicating where in the
-        # image the line is:
-        # i.e.
-        #    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0] indicates line is on the left
-        #    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0] indicates line is in the center
-        #
-        # The episode termination condition should be triggered when the line
-        # is not detected for more than 30 frames. In this case set the done
-        # variable to True.
-        #
-        # You can use the self.timeout variable to keep track of which frames
-        # have no line detected.
-
         return state, done
 
+
+    ## The seed function seeds the robot at the start of the episode
+    #  @param seed (default = None) seed for the robot
     def _seed(self, seed=None):
         self.np_random, seed = seeding.np_random(seed)
         return [seed]
 
+    ## The step function publishes an action to the robot depending on the action chosen and then provides the rewards gained
+    #  @param action the action being taken (ie. left, right, forward)
     def step(self, action):
 
         rospy.wait_for_service('/gazebo/unpause_physics')
@@ -133,6 +127,7 @@ class Gazebo_Lab06_Env(gazebo_env.GazeboEnv):
 
         vel_cmd = Twist()
 
+        # the following agular and linear values can be changed to tune the learning of the robot
         if action == 0:  # FORWARD
             vel_cmd.linear.x = 0.4
             vel_cmd.angular.z = 0.0
@@ -141,10 +136,12 @@ class Gazebo_Lab06_Env(gazebo_env.GazeboEnv):
             vel_cmd.angular.z = 0.5
         elif action == 2:  # RIGHT
             vel_cmd.linear.x = 0.0
-            vel_cmd.angular.z = -0.5
+            vel_cmd.angular.z = -0.25
 
+        # publish the action to the robot
         self.vel_pub.publish(vel_cmd)
 
+        # Wait for the next image for  the camera feed of the robot
         data = None
         while data is None:
             try:
@@ -160,14 +157,15 @@ class Gazebo_Lab06_Env(gazebo_env.GazeboEnv):
         except (rospy.ServiceException) as e:
             print ("/gazebo/pause_physics service call failed")
 
+        #Process the image after the action was taken
         state, done = self.process_image(data)
 
-        # Set the rewards for your action
+        # Set the rewards for your action. These can be changed to tune the learning of the robot (sometimes track dependant)
         if not done:
             if action == 0:  # FORWARD
                 reward = 4
             elif action == 1:  # LEFT
-                reward = 2
+                reward = 3
             else:
                 reward = 2  # RIGHT
         else:
@@ -175,6 +173,7 @@ class Gazebo_Lab06_Env(gazebo_env.GazeboEnv):
 
         return state, reward, done, {}
 
+    ## The reset function resets the robot (usually when its camera is off track)
     def reset(self):
 
         print("Episode history: {}".format(self.episode_history))

@@ -1,0 +1,94 @@
+\hypertarget{classliveplot_1_1LivePlot}{}\doxysection{liveplot.\+Live\+Plot Class Reference}
+\label{classliveplot_1_1LivePlot}\index{liveplot.LivePlot@{liveplot.LivePlot}}
+
+
+\mbox{\hyperlink{classliveplot_1_1LivePlot}{Live\+Plot}} class is used to create a live plot for rewards vs episodes.  
+
+
+
+
+Inheritance diagram for liveplot.\+Live\+Plot\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classliveplot_1_1LivePlot__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for liveplot.\+Live\+Plot\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=175pt]{classliveplot_1_1LivePlot__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classliveplot_1_1LivePlot_a3c3eb35c88379bbbbf0ad87606cf3d27}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, outdir, data\+\_\+key=rewards\+\_\+key, line\+\_\+color=\textquotesingle{}blue\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Liveplot renders a graph of either episode\+\_\+rewards or episode\+\_\+lengths. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classliveplot_1_1LivePlot_aeb8efa37060af35415890f50fb462232}{plot}} (self, env)
+\begin{DoxyCompactList}\small\item\em The plot function is used to plot the data depending on the type of graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classliveplot_1_1LivePlot_a4b82fd0dc2ca59758be8b2906a9a6f96}\label{classliveplot_1_1LivePlot_a4b82fd0dc2ca59758be8b2906a9a6f96}} 
+{\bfseries outdir}
+\item 
+\mbox{\Hypertarget{classliveplot_1_1LivePlot_acbedd5109938293708b6cf8caa0974a5}\label{classliveplot_1_1LivePlot_acbedd5109938293708b6cf8caa0974a5}} 
+{\bfseries data\+\_\+key}
+\item 
+\mbox{\Hypertarget{classliveplot_1_1LivePlot_a95059284606832ff33e763e77c3ae676}\label{classliveplot_1_1LivePlot_a95059284606832ff33e763e77c3ae676}} 
+{\bfseries line\+\_\+color}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classliveplot_1_1LivePlot}{Live\+Plot}} class is used to create a live plot for rewards vs episodes. 
+
+This plot displays the learning in realt after a set amount of episodes 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classliveplot_1_1LivePlot_a3c3eb35c88379bbbbf0ad87606cf3d27}\label{classliveplot_1_1LivePlot_a3c3eb35c88379bbbbf0ad87606cf3d27}} 
+\index{liveplot.LivePlot@{liveplot.LivePlot}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!liveplot.LivePlot@{liveplot.LivePlot}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def liveplot.\+Live\+Plot.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{outdir,  }\item[{}]{data\+\_\+key = {\ttfamily rewards\+\_\+key},  }\item[{}]{line\+\_\+color = {\ttfamily \textquotesingle{}blue\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Liveplot renders a graph of either episode\+\_\+rewards or episode\+\_\+lengths. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em outdir} & (outdir)\+: Monitor output file location used to populate the graph \\
+\hline
+{\em data\+\_\+key} & (Optional\mbox{[}str\mbox{]})\+: The key in the json to graph (episode\+\_\+rewards or episode\+\_\+lengths). \\
+\hline
+{\em line\+\_\+color} & (Optional\mbox{[}dict\mbox{]})\+: Color of the plot. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classliveplot_1_1LivePlot_aeb8efa37060af35415890f50fb462232}\label{classliveplot_1_1LivePlot_aeb8efa37060af35415890f50fb462232}} 
+\index{liveplot.LivePlot@{liveplot.LivePlot}!plot@{plot}}
+\index{plot@{plot}!liveplot.LivePlot@{liveplot.LivePlot}}
+\doxysubsubsection{\texorpdfstring{plot()}{plot()}}
+{\footnotesize\ttfamily def liveplot.\+Live\+Plot.\+plot (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{env }\end{DoxyParamCaption})}
+
+
+
+The plot function is used to plot the data depending on the type of graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em env} & env is the environment containing the required data for graphing \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+liveplot.\+py\end{DoxyCompactItemize}

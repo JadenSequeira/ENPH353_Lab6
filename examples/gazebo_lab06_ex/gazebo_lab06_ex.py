@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+
+## @package examples
+#  Main
+#
+#  The following script execute q-learning for robot in the ROS environment for line following
+
+
 import gym
 from gym import wrappers
 import gym_gazebo
@@ -6,13 +13,12 @@ import time
 import numpy
 import random
 import time
-
 import qlearn
 import liveplot
-
 from matplotlib import pyplot as plt
 
-
+## The render funciton renders the environment depending on the epsiode
+#  It is an optional implementation in the q-learning model
 def render():
     render_skip = 0  # Skip first X episodes.
     render_interval = 50  # Show render Every Y episodes.
@@ -25,43 +31,51 @@ def render():
         env.render(close=True)
 
 
+## The main function executes the main q-learning algorithm through the use of the qlearn class
 if __name__ == '__main__':
 
+    # Setup environment with the reward system and liveplot
     env = gym.make('Gazebo_Lab06-v0')
-
     outdir = '/tmp/gazebo_gym_experiments'
     env = gym.wrappers.Monitor(env, outdir, force=True)
     plotter = liveplot.LivePlot(outdir)
 
     last_time_steps = numpy.ndarray(0)
 
+    # Initialize the qlearning model. The alpha value os the learning rate, the gamma value is the consideration of future rewards,
+    # and the epsilon is the exploration vs exploitation setting
     qlearn = qlearn.QLearn(actions=range(env.action_space.n),
-                           alpha=0.2, gamma=0.8, epsilon=0.9)
+                           alpha=0.5, gamma=0.5, epsilon=0.9)
+
+    # Uncomment the below line when there is a Qvalue file that can be loaded
 
     #qlearn.loadQ("QValues_A+")
 
+    # Initialize the epsilon value and its discounting each cycle (lower discount value the more exploitation in subsequent episodes)
     initial_epsilon = qlearn.epsilon
-
     epsilon_discount = 0.9986
 
+    # Initialization of settings
     start_time = time.time()
     total_episodes = 10000
     highest_reward = 0
 
+    # A new episode is started each time the camera loses sight of the track for more than 30 frames
     for x in range(total_episodes):
         done = False
 
-        cumulated_reward = 0  # Should going forward give more reward then L/R?
+        cumulated_reward = 0  # Should going forward give more reward then L/R?  - Depends on the track and tuning parameters of speed and turning. Also depends on the state space
 
         observation = env.reset()
 
         if qlearn.epsilon > 0.05:
             qlearn.epsilon *= epsilon_discount
 
-        # render() #defined above, not env.render()
+       # render() #defined above, not env.render()
 
         state = ''.join(map(str, observation))
 
+        # Main Q-learning execution
         i = -1
         while True:
             i += 1
@@ -72,12 +86,14 @@ if __name__ == '__main__':
             observation, reward, done, info = env.step(action)
             cumulated_reward += reward
 
+            # Saves the highest policy
             if highest_reward < cumulated_reward:
                 highest_reward = cumulated_reward
                 qlearn.saveQ("QValues_A+")
 
             nextState = ''.join(map(str, observation))
 
+            # Update Q-Values
             qlearn.learn(state, action, reward, nextState)
 
             env._flush(force=True)
@@ -90,10 +106,12 @@ if __name__ == '__main__':
 
         print("===== Completed episode {}".format(x))
 
+        # Plot every 5 episodes and save the Q-values
         if (x > 0) and (x % 5 == 0):
             qlearn.saveQ("QValues")
             plotter.plot(env)
 
+        # Display the Q-learning settings after each episode, for the next episode
         m, s = divmod(int(time.time() - start_time), 60)
         h, m = divmod(m, 60)
         print ("Starting EP: " + str(x+1) +

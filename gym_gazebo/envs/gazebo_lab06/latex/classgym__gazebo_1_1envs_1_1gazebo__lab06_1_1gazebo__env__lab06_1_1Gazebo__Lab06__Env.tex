@@ -1,0 +1,119 @@
+\hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env}{}\doxysection{gym\+\_\+gazebo.\+envs.\+gazebo\+\_\+lab06.\+gazebo\+\_\+env\+\_\+lab06.\+Gazebo\+\_\+\+Lab06\+\_\+\+Env Class Reference}
+\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env}\index{gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env@{gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env}}
+
+
+\mbox{\hyperlink{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env}{Gazebo\+\_\+\+Lab06\+\_\+\+Env}} Class creates an R\+OS and gym-\/gazebo environments for line following Q-\/learning.  
+
+
+
+
+Inheritance diagram for gym\+\_\+gazebo.\+envs.\+gazebo\+\_\+lab06.\+gazebo\+\_\+env\+\_\+lab06.\+Gazebo\+\_\+\+Lab06\+\_\+\+Env\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for gym\+\_\+gazebo.\+envs.\+gazebo\+\_\+lab06.\+gazebo\+\_\+env\+\_\+lab06.\+Gazebo\+\_\+\+Lab06\+\_\+\+Env\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a25c2bcadf7bfd16a1755325dd2e75b64}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a25c2bcadf7bfd16a1755325dd2e75b64}} 
+def \mbox{\hyperlink{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a25c2bcadf7bfd16a1755325dd2e75b64}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\begin{DoxyCompactList}\small\item\em Initialization function iniitializes the R\+OS environment and robot along with Subsciption and Publishing The functino also intializes the gazebo physics engine. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a7f6a433ccbab3bb48c0226e85300b7a4}{process\+\_\+image}} (self, data)
+\begin{DoxyCompactList}\small\item\em The process\+\_\+image function intakes an image and provides and returns a state based on the state spaced implemented More precisely, it analyzes the cv\+\_\+image and computes the state array and episode termination condition. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a084f8d4a92bfeb9cea2908ccbfaf24e9}{step}} (self, action)
+\begin{DoxyCompactList}\small\item\em The step function publishes an action to the robot depending on the action chosen and then provides the rewards gained. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a7e72e90fa2780e653cf767992570a443}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a7e72e90fa2780e653cf767992570a443}} 
+def \mbox{\hyperlink{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a7e72e90fa2780e653cf767992570a443}{reset}} (self)
+\begin{DoxyCompactList}\small\item\em The reset function resets the robot (usually when its camera is off track) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a7bfd854816f5a525a5037ec7780e8fe9}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a7bfd854816f5a525a5037ec7780e8fe9}} 
+{\bfseries vel\+\_\+pub}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a490311de52af41ffa80e2c434a236189}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a490311de52af41ffa80e2c434a236189}} 
+{\bfseries unpause}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a3e1986ce7e7b8821abfa094b76ddfc4d}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a3e1986ce7e7b8821abfa094b76ddfc4d}} 
+{\bfseries pause}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a62286ecc5efe08b931674a8b24b84861}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a62286ecc5efe08b931674a8b24b84861}} 
+{\bfseries reset\+\_\+proxy}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_af05ffc7cec1edc5f5f798efea90441bb}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_af05ffc7cec1edc5f5f798efea90441bb}} 
+{\bfseries action\+\_\+space}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_af3924f8273b6f19b70ec3d3519fc0973}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_af3924f8273b6f19b70ec3d3519fc0973}} 
+{\bfseries reward\+\_\+range}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_af8c480ec186e3295311516c54968ed8a}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_af8c480ec186e3295311516c54968ed8a}} 
+{\bfseries episode\+\_\+history}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a38411bf009a283a3fccf0813eb48c5ca}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a38411bf009a283a3fccf0813eb48c5ca}} 
+{\bfseries bridge}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_acff2a8fdf49e5f50deafd79c7b985090}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_acff2a8fdf49e5f50deafd79c7b985090}} 
+{\bfseries timeout}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a4a773086286e6343772786596f97752e}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a4a773086286e6343772786596f97752e}} 
+{\bfseries lower\+\_\+blue}
+\item 
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_af329517cd497806d284616bba5e171a4}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_af329517cd497806d284616bba5e171a4}} 
+{\bfseries upper\+\_\+blue}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env}{Gazebo\+\_\+\+Lab06\+\_\+\+Env}} Class creates an R\+OS and gym-\/gazebo environments for line following Q-\/learning. 
+
+The class initializes the environment along with bridging the camera vision to open\+CV images for processing and analyzing. The class can be used to process the image into a state in a designed statespace. It can also be used to move the robot and determine the reward through the step function, based on the aciton chosen. Finally it can reset the robot in the environment and can also seed the robot at the start (randomly). 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a7f6a433ccbab3bb48c0226e85300b7a4}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a7f6a433ccbab3bb48c0226e85300b7a4}} 
+\index{gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env@{gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env}!process\_image@{process\_image}}
+\index{process\_image@{process\_image}!gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env@{gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env}}
+\doxysubsubsection{\texorpdfstring{process\_image()}{process\_image()}}
+{\footnotesize\ttfamily def gym\+\_\+gazebo.\+envs.\+gazebo\+\_\+lab06.\+gazebo\+\_\+env\+\_\+lab06.\+Gazebo\+\_\+\+Lab06\+\_\+\+Env.\+process\+\_\+image (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{data }\end{DoxyParamCaption})}
+
+
+
+The process\+\_\+image function intakes an image and provides and returns a state based on the state spaced implemented More precisely, it analyzes the cv\+\_\+image and computes the state array and episode termination condition. 
+
+The state array is a list of 10 elements (in this case) indicating where in the The episode termination condition is triggered and outputted when the line is not detected for more than 30 frames. 
+\begin{DoxyParams}{Parameters}
+{\em data} & the image array provided from subscribing to the robots camera \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a084f8d4a92bfeb9cea2908ccbfaf24e9}\label{classgym__gazebo_1_1envs_1_1gazebo__lab06_1_1gazebo__env__lab06_1_1Gazebo__Lab06__Env_a084f8d4a92bfeb9cea2908ccbfaf24e9}} 
+\index{gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env@{gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env}!step@{step}}
+\index{step@{step}!gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env@{gym\_gazebo.envs.gazebo\_lab06.gazebo\_env\_lab06.Gazebo\_Lab06\_Env}}
+\doxysubsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily def gym\+\_\+gazebo.\+envs.\+gazebo\+\_\+lab06.\+gazebo\+\_\+env\+\_\+lab06.\+Gazebo\+\_\+\+Lab06\+\_\+\+Env.\+step (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{action }\end{DoxyParamCaption})}
+
+
+
+The step function publishes an action to the robot depending on the action chosen and then provides the rewards gained. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & the action being taken (ie. left, right, forward) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+gazebo\+\_\+env\+\_\+lab06.\+py\end{DoxyCompactItemize}
