@@ -1,4 +1,4 @@
-ENPH 353 Lab 6 - Jaden Sequeira
+ENPH 353 Lab 7 - Jaden Sequeira
 
 Please see the below image for the file structure. The Doxygen comments are in the respective parent folder as HTML and LATEX Files.
 
